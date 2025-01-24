@@ -1,10 +1,10 @@
 import { codeSchemas as schemas } from "@/lib/consts"
 import { Database } from "lucide-react"
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter"
-import sql from "react-syntax-highlighter/dist/esm/languages/hljs/sql"
-import { xcode } from "react-syntax-highlighter/dist/esm/styles/hljs"
+import pgsql from "react-syntax-highlighter/dist/esm/languages/hljs/pgsql"
+import oneLight from "react-syntax-highlighter/dist/esm/styles/hljs/atom-one-light"
 
-SyntaxHighlighter.registerLanguage("sql", sql)
+SyntaxHighlighter.registerLanguage("pgsql", pgsql)
 
 export default function CodeView() {
   return (
@@ -16,9 +16,8 @@ export default function CodeView() {
             <h3 className="text-lg">{schema.name}</h3>
           </div>
           <SyntaxHighlighter
-            language="sql"
-            style={xcode}
-            wrapLongLines
+            language="pgsql"
+            style={oneLight}
             className="rounded-lg text-sm"
             customStyle={{
               backgroundColor: "#FAFAFA",

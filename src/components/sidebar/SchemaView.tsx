@@ -22,12 +22,23 @@ export default function SchemaView() {
                 </div>
                 <div className="flex text-sm">
                   <pre>{column.name}</pre>
-                  <pre className="ml-1 text-[#AA0D91]">[{column.type}]</pre>
-                  <pre className="text-[#0E0EFF]">
-                    ({column.numeric.join(",")})
-                  </pre>
+                  <pre className="ml-1">[</pre>
+                  <pre className="text-[#A626A4]">{column.type}</pre>
+                  <pre>]</pre>
+                  <pre>(</pre>
+                  {column.numeric.map((number, i) => {
+                    return (
+                      <div key={`${number}-${i}`} className="flex">
+                        <pre key={i} className="text-[#B76B01]">
+                          {number}
+                        </pre>
+                        {i !== column.numeric.length - 1 && <pre>,</pre>}
+                      </div>
+                    )
+                  })}
+                  <pre>)</pre>
                   {column.isForeignKey && (
-                    <pre className="ml-1 text-[#5C2699]">(FK)</pre>
+                    <pre className="ml-1 text-[#4078F2]">(FK)</pre>
                   )}
                 </div>
               </div>
