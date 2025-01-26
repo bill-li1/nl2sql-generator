@@ -1,12 +1,14 @@
 import { codeSchemas as schemas } from "@/lib/consts"
 import { Database } from "lucide-react"
-import { Light as SyntaxHighlighter } from "react-syntax-highlighter"
-import pgsql from "react-syntax-highlighter/dist/esm/languages/hljs/pgsql"
-import oneLight from "react-syntax-highlighter/dist/esm/styles/hljs/atom-one-light"
+import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter"
+import sql from "react-syntax-highlighter/dist/esm/languages/prism/sql"
+import { oneLight } from "react-syntax-highlighter/dist/esm/styles/prism"
 
-SyntaxHighlighter.registerLanguage("pgsql", pgsql)
+SyntaxHighlighter.registerLanguage("sql", sql)
 
 export default function CodeView() {
+  console.log("One Light styles:", oneLight)
+
   return (
     <div>
       {schemas.map((schema) => (
@@ -16,14 +18,13 @@ export default function CodeView() {
             <h3 className="text-lg">{schema.name}</h3>
           </div>
           <SyntaxHighlighter
-            language="pgsql"
+            language="sql"
             style={oneLight}
             className="rounded-lg text-sm"
             customStyle={{
               backgroundColor: "#FAFAFA",
-              paddingLeft: "1.25rem",
-              paddingTop: "0.75rem",
-              paddingBottom: "0.75rem",
+              border: "1px solid #DEDEDE",
+              padding: "0.75rem",
             }}
           >
             {schema.sql}

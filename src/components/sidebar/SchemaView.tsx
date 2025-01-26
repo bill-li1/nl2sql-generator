@@ -1,4 +1,4 @@
-import { Database, CircleDot } from "lucide-react"
+import { Database, KeyRound as Key } from "lucide-react"
 import { schemaData } from "@/lib/consts"
 
 export default function SchemaView() {
@@ -10,13 +10,16 @@ export default function SchemaView() {
             <Database className="h-4 w-4" />
             <h3 className="text-lg">{table.name}</h3>
           </div>
-          <div className="space-y-2 bg-[#FAFAFA] rounded-lg px-4 py-3">
+          <div className="space-y-2 bg-[#FAFAFA] rounded-lg px-4 py-3 border border-gray-200">
             {table.columns.map((column) => (
-              <div key={column.name} className="flex items-start gap-2 text-md">
-                <div className="w-4 h-4 mt-1 flex items-center justify-center">
+              <div
+                key={column.name}
+                className="flex gap-2 text-md items-center"
+              >
+                <div className="w-4 h-4 flex items-center justify-center">
                   {column.isPrimaryKey && (
                     <span className="text-yellow-500" title="Primary Key">
-                      <CircleDot className="h-4 w-4" />
+                      <Key className="h-4 w-4" strokeWidth={2.5} />
                     </span>
                   )}
                 </div>

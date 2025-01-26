@@ -1,0 +1,86 @@
+.editor-wrapper :global(pre),
+.editor-wrapper :global(textarea) {
+  color: hsl(230, 8%, 24%);
+  font-family: "Fira code", "Fira Mono", monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  tab-size: 2;
+  hyphens: none;
+}
+
+.editor-area {
+  min-height: 10rem;
+  max-height: 30rem;
+  overflow: auto;
+  width: 100%;
+  border: 1px solid #dedede;
+  border-radius: 0.375rem;
+  transition: border-color 0.25s ease-in-out;
+}
+
+.editor-area:focus-within {
+  border: 1px solid black;
+  outline: none;
+}
+
+.editor-area textarea {
+  outline: none;
+  box-shadow: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.editor-area > div {
+  min-height: 10rem;
+  height: 100%;
+  width: 100%;
+}
+
+.editor-area pre {
+  width: 100%;
+}
+
+.editor-wrapper :global(.token.comment) {
+  color: #a0a1a7;
+}
+
+.editor-wrapper :global(.token.prolog),
+.editor-wrapper :global(.token.doctype),
+.editor-wrapper :global(.token.function),
+.editor-wrapper :global(.token.keyword) {
+  color: #a626a4;
+}
+
+.editor-wrapper :global(.token.string) {
+  color: #50a14f;
+}
+
+.editor-wrapper :global(.token.number),
+.editor-wrapper :global(.token.constant),
+.editor-wrapper :global(.token.boolean) {
+  color: #986801;
+}
+
+.editor-wrapper :global(.token.operator),
+.editor-wrapper :global(.token.punctuation.operator) {
+  color: #4078f2;
+}
+
+.editor-wrapper :global(.token.punctuation) {
+  color: #383a42;
+}
+
+.editor-wrapper :global(.token.class-name) {
+  color: #c18401;
+}
+
+/* Selection */
+.editor-wrapper :global(textarea::selection),
+.editor-wrapper :global(pre::selection),
+.editor-wrapper :global(pre *::selection) {
+  background: hsla(230, 1%, 85%, 0.5) !important;
+}

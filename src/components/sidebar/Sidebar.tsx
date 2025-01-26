@@ -1,5 +1,3 @@
-"use client"
-
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import CodeView from "@/components/sidebar/CodeView"
 import SchemaView from "@/components/sidebar/SchemaView"

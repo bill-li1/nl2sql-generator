@@ -10,6 +10,7 @@ export const codeSchemas: Array<CodeSchema> = [
   building    varchar(15),
   room_number varchar(7),
   capacity    numeric(4,0),
+  -- test test test
   primary key (building, room_number)
 );`,
   },
