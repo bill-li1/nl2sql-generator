@@ -1,23 +1,54 @@
 "use client"
 
-import { useState } from "react"
+import { Button } from "@/components/ui/button"
+import { PlayIcon } from "lucide-react"
+import { useState, useEffect } from "react"
 import Editor from "@/components/editor/Editor"
 import Results from "@/components/Results"
+import { useDatabase } from "@/app/hooks/useDatabase"
+
+const defaultCode = `-- Create new tables, insert data and all other SQL operations. 
+
+SELECT first_name, age
+FROM Customers
+LIMIT 10;`
 
 export default function Main() {
+  const [code, setCode] = useState(defaultCode)
   const [results, setResults] = useState<any>()
   const [error, setError] = useState<string>("")
+  const { db, error: dbError } = useDatabase()
+
+  useEffect(() => {
+    if (dbError) {
+      setError(dbError)
+    }
+  }, [dbError])
+
+  const executeQuery = () => {
+    if (!db) {
+      setError("Database not initialized")
+      return
+    }
+
+    try {
+      const result = db.exec(code)
+      setResults(result)
+      setError("")
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to execute query")
+      setResults(null)
+    }
+  }
+
   return (
-    <div className="p-4 space-y-4 max-w-2xl">
-      <h2 className="text-3xl font-semibold tracking-tight">
-        Online SQL Interpreter
-      </h2>
-      <p className="text-muted-foreground leading-5">
-        Run SQL queries on a sample dataset. All queries are processed directly
-        in your browser—no server required.
-      </p>
-      <Editor />
+    <>
+      <Editor code={code} setCode={setCode} />
+      <Button onClick={executeQuery}>
+        <PlayIcon className="h-4 w-4 mr-2" />
+        Execute SQL
+      </Button>
       <Results error={error} results={results} />
-    </div>
+    </>
   )
 }

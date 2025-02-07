@@ -18,6 +18,7 @@
     "clsx": "^2.1.1",
     "lucide-react": "^0.471.1",
     "next": "15.1.4",
+    "prism-react-renderer": "^2.4.1",
     "prismjs": "^1.29.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
