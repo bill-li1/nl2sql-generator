@@ -71,6 +71,9 @@ importers:
       react-virtuoso:
         specifier: ^4.12.5
         version: 4.12.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      sql.js:
+        specifier: ^1.12.0
+        version: 1.12.0
       tailwind-merge:
         specifier: ^2.6.0
         version: 2.6.0
@@ -2260,6 +2263,9 @@ packages:
 
   space-separated-tokens@1.1.5:
     resolution: {integrity: sha512-q/JSVd1Lptzhf5bkYm4ob4iWPjx0KiRe3sRFBNrVqbJkFaBm5vbbowy1mymoPNLRa52+oadOhJ+K49wsSeSjTA==}
+
+  sql.js@1.12.0:
+    resolution: {integrity: sha512-Bi+43yMx/tUFZVYD4AUscmdL6NHn3gYQ+CM+YheFWLftOmrEC/Mz6Yh7E96Y2WDHYz3COSqT+LP6Z79zgrwJlA==}
 
   stable-hash@0.0.4:
     resolution: {integrity: sha512-LjdcbuBeLcdETCrPn9i8AYAZ1eCtu4ECAWtP7UleOiZ9LzVxRzzUZEoZ8zB24nhkQnDWyET0I+3sWokSDS3E7g==}
@@ -4820,6 +4826,8 @@ snapshots:
   source-map-js@1.2.1: {}
 
   space-separated-tokens@1.1.5: {}
+
+  sql.js@1.12.0: {}
 
   stable-hash@0.0.4: {}
 
