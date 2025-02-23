@@ -17,7 +17,7 @@ export default function ForeignKeyTooltip({ table, row }: Props) {
     .map((c) => c.name)
   return (
     <Tooltip>
-      <TooltipTrigger>
+      <TooltipTrigger asChild>
         <div className="text-blue-400 flex pl-2 gap-1 items-center">
           <LinkIcon className="h-[12px] w-[12px]" strokeWidth={3} />
           <ArrowRight className="h-[12px] w-[12px]" strokeWidth={3} />

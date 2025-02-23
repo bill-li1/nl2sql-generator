@@ -4,12 +4,14 @@ import initSqlJs, { Database } from "sql.js"
 export function useDatabase() {
   const [db, setDb] = useState<Database | null>(null)
   const [error, setError] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     let database: Database | null = null
 
     async function initDb() {
       try {
+        setIsLoading(true)
         // Initialize SQL.js
         const SQL = await initSqlJs({
           locateFile: (file) =>
@@ -28,6 +30,8 @@ export function useDatabase() {
         setError(
           err instanceof Error ? err.message : "Failed to initialize database"
         )
+      } finally {
+        setIsLoading(false)
       }
     }
 
@@ -41,5 +45,5 @@ export function useDatabase() {
     }
   }, [])
 
-  return { db, error }
+  return { db, error, isLoading }
 }

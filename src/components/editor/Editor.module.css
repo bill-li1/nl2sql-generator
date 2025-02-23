@@ -13,17 +13,17 @@
 }
 
 .editor-area {
-  min-height: 8rem;
+  min-height: 4.5rem;
   max-height: 30rem;
   overflow: auto;
   width: 100%;
   border: 1px solid #dedede;
-  border-radius: 0.375rem;
+  border-radius: 0.375rem; 
   transition: border-color 0.25s ease-in-out;
 }
 
 .editor-area > div {
-  min-height: 8rem;
+  min-height: 4.5rem;
   height: 100%;
   width: 100%;
 }

@@ -3,6 +3,20 @@ export interface CodeSchema {
   sql: string
 }
 
+export type Mode = "sql" | "plain text"
+
+export type SQLValue = number | string | Uint8Array | null
+
+export interface QueryExecResult {
+  columns: Array<string>
+  values: Array<Array<SQLValue>>
+}
+
+export interface ResultType {
+  queryTime: number
+  data: Array<QueryExecResult>
+}
+
 export interface RowType {
   name: string
   type: string
@@ -94,6 +108,8 @@ CREATE TABLE staffs (
 CREATE TABLE orders (
   order_id      INTEGER PRIMARY KEY,
   customer_id   INTEGER,
+  -- 1 = Pending; 2 = Processing
+  -- 3 = Rejected; 4 = Completed
   order_status  INTEGER NOT NULL,
   order_date    DATE NOT NULL,
   store_id      INTEGER NOT NULL,

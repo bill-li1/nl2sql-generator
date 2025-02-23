@@ -6,6 +6,18 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.bb {
+  border: 2px solid #3b82f6; /* Tailwind's blue-500 */
+}
+
+.br {
+  border: 2px solid #ef4444; /* Tailwind's red-500 */
+}
+
+.bgr {
+  border: #48bb78;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

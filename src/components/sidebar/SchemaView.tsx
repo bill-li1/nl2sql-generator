@@ -13,7 +13,7 @@ export default function SchemaView() {
               <Database className="h-4 w-4" />
               <h3 className="text-lg">{table.name}</h3>
             </div>
-            <div className="space-y-2 bg-[#FAFAFA] rounded-lg px-4 py-3 border border-gray-200">
+            <div className="space-y-2 bg-[#FAFAFA] rounded-[0.375rem] px-4 py-3 border border-gray-200">
               {table.rows.map((row) => (
                 <SchemaRow key={row.name} row={row} table={table} />
               ))}

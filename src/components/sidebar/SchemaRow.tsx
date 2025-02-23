@@ -9,7 +9,7 @@ interface Props {
 
 export default function SchemaRow({ row, table }: Props) {
   return (
-    <div key={row.name} className="flex gap-2 text-md items-center">
+    <div key={row.name} className="flex gap-2 items-center">
       <div className="w-4 h-4 flex items-center justify-center">
         {row.isPrimaryKey && <PrimaryKeyTooltip table={table} row={row} />}
       </div>

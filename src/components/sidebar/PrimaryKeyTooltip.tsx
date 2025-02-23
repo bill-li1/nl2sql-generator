@@ -17,7 +17,7 @@ export default function PrimaryKeyTooltip({ table, row }: Props) {
     .map((c) => c.name)
   return (
     <Tooltip>
-      <TooltipTrigger>
+      <TooltipTrigger asChild>
         <div className="text-yellow-500">
           <Key className="h-[14px] w-[14px]" strokeWidth={3} />
         </div>
