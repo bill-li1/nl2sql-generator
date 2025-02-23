@@ -12,6 +12,7 @@ import { useEffect, useState } from "react"
 import { getTableSchema, getSampleRows } from "@/app/actions"
 import { generateQuery } from "@/app/serverActions"
 import CodeBlock from "@/components/CodeBlock"
+import Loading from "@/components/results/Loading"
 
 const defaultCode = `-- Create new tables, insert data and all other SQL operations. 
 SELECT * FROM Customers limit 50;`
@@ -24,6 +25,7 @@ export default function Main() {
   const [mode, setMode] = useState<Mode>("sql")
   const [generatedCode, setGeneratedCode] = useState("")
   const { db, error: dbError, isLoading: isDbLoading } = useDatabase()
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     if (dbError) {
@@ -61,7 +63,10 @@ export default function Main() {
   }
 
   const executeSQLQuery = () => {
+    setIsLoading(true)
+    clearResults()
     queryData(code)
+    setIsLoading(false)
   }
 
   const executePlainTextQuery = async () => {
@@ -69,11 +74,20 @@ export default function Main() {
       setError("Database not initialized")
       return
     }
-    const schemas = getTableSchema(db)
-    const sampleRows = getSampleRows(db)
-    const result = await generateQuery(plainText, schemas, sampleRows)
-    setGeneratedCode(result)
-    queryData(result)
+    setIsLoading(true)
+    clearResults()
+    try {
+      const schemas = getTableSchema(db)
+      const sampleRows = getSampleRows(db)
+      const result = await generateQuery(plainText, schemas, sampleRows)
+      setGeneratedCode(result)
+      queryData(result)
+    } catch (err) {
+      console.error(err)
+      setError(err instanceof Error ? err.message : "Failed to execute query")
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const executeQuery = mode === "sql" ? executeSQLQuery : executePlainTextQuery
@@ -105,6 +119,7 @@ export default function Main() {
         </div>
         <ModeSelector mode={mode} setMode={setMode} />
       </div>
+      {isLoading && <Loading />}
       {!isSQL && generatedCode && <CodeBlock code={generatedCode.trim()} />}
       {results && <Results results={results} />}
       {error && <ErrorMessage error={error} onDismiss={() => setError(null)} />}
