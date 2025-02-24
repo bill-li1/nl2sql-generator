@@ -9,7 +9,7 @@ export default function Home() {
       <main className="flex items-start justify-center w-full h-full">
         <div className="p-4 pr-8 space-y-4 flex flex-col max-w-4xl h-full pb-0">
           <h2 className="text-4xl font-semibold tracking-tight">
-            Online SQL Interpreter
+            AI-Powered SQL Playground
           </h2>
           <p className="text-muted-foreground">
             Run SQL queries or describe your request in plain text to explore a
